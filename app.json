@@ -54,6 +54,12 @@
         "projectId": "32c39758-6aa5-4e88-9ab7-62ff91a5c6fa"
       }
     },
-    "owner": "omarhamacut"
+    "owner": "omarhamacut",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/32c39758-6aa5-4e88-9ab7-62ff91a5c6fa"
+    }
   }
 }
