@@ -108,7 +108,7 @@ export default function HomeScreen() {
   const hentBrukerData = async () => {
     if (!token) return;
     try {
-      const response = await fetch('http://192.168.5.212/api/me', {
+      const response = await fetch('https://api.cutcount.no/api/me', {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -123,12 +123,12 @@ export default function HomeScreen() {
   const hentMenyLydlost = async () => {
     if (!token || !aktivAvdeling) return;
     try {
-      const resTjenester = await fetch(`http://192.168.5.212/api/tjenester?avdeling_id=${aktivAvdeling.id}`, {
+      const resTjenester = await fetch(`https://api.cutcount.no/api/tjenester?avdeling_id=${aktivAvdeling.id}`, {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
       });
       const dataTjenester = await resTjenester.json();
 
-      const resProdukter = await fetch(`http://192.168.5.212/api/produkter`, {
+      const resProdukter = await fetch(`https://api.cutcount.no/api/produkter`, {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
       });
       const dataProdukter = await resProdukter.json();
@@ -193,7 +193,7 @@ export default function HomeScreen() {
   const utforAutomatiskUtsjekk = async () => {
     try {
       if (!aktivAvdeling) return;
-      await fetch('http://192.168.5.212/api/stempling/ut', {
+      await fetch('https://api.cutcount.no/api/stempling/ut', {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({
@@ -230,7 +230,7 @@ export default function HomeScreen() {
       const pushToken = await registrerForPushVarslerAsync();
       
       if (pushToken) {
-        await fetch('http://192.168.5.212/api/lagre-push-token', {
+        await fetch('https://api.cutcount.no/api/lagre-push-token', {
           method: 'POST',
           headers: { 
             'Accept': 'application/json', 
@@ -248,7 +248,7 @@ export default function HomeScreen() {
   const loggInn = async () => {
     try {
       setLaster(true);
-      const response = await fetch('http://192.168.5.212/api/login', {
+      const response = await fetch('https://api.cutcount.no/api/login', {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: epost, password: passord })
@@ -273,7 +273,7 @@ export default function HomeScreen() {
 
   const sjekkAktivStatus = async (gyldigToken: string) => {
     try {
-      const response = await fetch('http://192.168.5.212/api/stempling/status', {
+      const response = await fetch('https://api.cutcount.no/api/stempling/status', {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${gyldigToken}` }
       });
       const statusData = await response.json();
@@ -296,7 +296,7 @@ export default function HomeScreen() {
 
   const finnVaktEllerBeOmValg = async (gyldigToken: string) => {
     try {
-      const response = await fetch('http://192.168.5.212/api/mine-vakter', {
+      const response = await fetch('https://api.cutcount.no/api/mine-vakter', {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${gyldigToken}` }
       });
       const vaktData = await response.json();
@@ -390,7 +390,7 @@ export default function HomeScreen() {
 
       const endpoint = erStempletInn ? '/stempling/ut' : '/stempling/inn';
 
-      const response = await fetch(`http://192.168.5.212/api${endpoint}`, {
+      const response = await fetch(`https://api.cutcount.no/api${endpoint}`, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({
@@ -461,12 +461,12 @@ export default function HomeScreen() {
 
   const hentTjenesterOgVisMeny = async (avdelingId: number) => {
     try {
-      const resTjenester = await fetch(`http://192.168.5.212/api/tjenester?avdeling_id=${avdelingId}`, {
+      const resTjenester = await fetch(`https://api.cutcount.no/api/tjenester?avdeling_id=${avdelingId}`, {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
       });
       const dataTjenester = await resTjenester.json();
 
-      const resProdukter = await fetch(`http://192.168.5.212/api/produkter`, {
+      const resProdukter = await fetch(`https://api.cutcount.no/api/produkter`, {
         headers: { 'Accept': 'application/json', 'Authorization': `Bearer ${token}` }
       });
       const dataProdukter = await resProdukter.json();
